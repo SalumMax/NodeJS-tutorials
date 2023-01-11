@@ -1,0 +1,18 @@
+const fs = require('fs');
+const zlib = require('zlib');
+const readStream = fs.createReadStream('./content/text4.txt');
+const writeStream = fs.createWriteStream('./content/text2.txt');
+
+// readStream.on('data', (chunk) => {
+//   writeStream.write('START');
+//   writeStream.write(chunk);
+//   writeStream.write('END');
+// });
+
+const handleError = () => {
+  console.log('error');
+  readStream.destroy();
+  writeStream.end('Finished with error...');
+};
+
+readStream.on('error', handleError).pipe(writeStream).on('error', handleError);
