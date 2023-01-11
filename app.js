@@ -5,6 +5,7 @@ const PORT = 3002;
 
 const server = http.createServer((req, res) => {
   console.log('Server request');
+  console.log('just for the test of Nodemon');
 
   res.setHeader('Content-Type', 'text/html');
 
